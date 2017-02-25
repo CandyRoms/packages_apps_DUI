@@ -1,5 +1,5 @@
 /**
- * Copyright (C) 2016-2017 The DirtyUnicorns Project
+ * Copyright (C) 2016 The DirtyUnicorns Project
  * Copyright (C) 2014 SlimRoms
  * 
  * @author: Randall Rushing <randall.rushing@gmail.com>
@@ -66,7 +66,6 @@ import com.android.systemui.navigation.smartbar.SmartBarTransitions;
 import com.android.systemui.navigation.smartbar.SmartBarView;
 import com.android.systemui.navigation.smartbar.SmartButtonView;
 import com.android.systemui.navigation.utils.SmartObserver.SmartObservable;
-import com.android.systemui.singlehandmode.SlideTouchEvent;
 import com.android.systemui.statusbar.phone.BarTransitions;
 import com.android.systemui.R;
 
@@ -133,12 +132,9 @@ public class SmartBarView extends BaseNavigationBar {
 
     private GestureDetector mNavDoubleTapToSleep;
 
-    private SlideTouchEvent mSlideTouchEvent;
-
     public SmartBarView(Context context, boolean asDefault) {
         super(context);
         mBarTransitions = new SmartBarTransitions(this);
-        mSlideTouchEvent = new SlideTouchEvent(context);
         mScreenPinningEnabled = asDefault;
         if (!asDefault) {
             mEditor = new SmartBarEditor(this);
@@ -164,15 +160,8 @@ public class SmartBarView extends BaseNavigationBar {
         if (Settings.System.getIntForUser(mContext.getContentResolver(),
                     Settings.System.SMARTBAR_DOUBLETAP_SLEEP, 1, UserHandle.USER_CURRENT) == 1) {
             mNavDoubleTapToSleep.onTouchEvent(event);
-            mSlideTouchEvent.handleTouchEvent(event);
         }
         return super.onTouchEvent(event);
-    }
-
-    @Override
-    public boolean onInterceptTouchEvent(MotionEvent event) {
-        mSlideTouchEvent.handleTouchEvent(event);
-        return super.onInterceptTouchEvent(event);
     }
 
     ArrayList<String> getCurrentSequence() {
