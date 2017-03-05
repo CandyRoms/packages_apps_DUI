@@ -80,8 +80,6 @@ public class SmartBarEditor extends BaseEditor implements View.OnTouchListener {
     public static final int MENU_MAP_ICON = 2;
     public static final int MENU_MAP_ADD = 3;
     public static final int MENU_MAP_REMOVE = 4;
-    public static final int MENU_MAP_CANCEL = 5;
-    public static final int MENU_MAP_FINISH = 6;
     public static final int MENU_MAP_ACTIONS_SINGLE_TAP = 7;
     public static final int MENU_MAP_ACTIONS_DOUBLE_TAP = 8;
     public static final int MENU_MAP_ACTIONS_LONG_PRESS = 9;
@@ -141,11 +139,6 @@ public class SmartBarEditor extends BaseEditor implements View.OnTouchListener {
                     break;
                 case MENU_MAP_REMOVE:
                     removeButton();
-                    break;
-                case MENU_MAP_CANCEL:
-                    break;
-                case MENU_MAP_FINISH:
-                    changeEditMode(MODE_OFF);
                     break;
                 case MENU_MAP_ACTIONS_SINGLE_TAP:
                     startActionPicker(ActionConfig.PRIMARY);
@@ -701,20 +694,6 @@ public class SmartBarEditor extends BaseEditor implements View.OnTouchListener {
                 DUActionUtils.getDrawable(mHost.getContext(), "ic_smartbar_editor_remove",
                         DUActionUtils.PACKAGE_SYSTEMUI));
         mPrimaryMenuItems.put(4, action);
-
-        action = new ActionItem(5,
-                DUActionUtils.getString(mHost.getContext(), "label_smartbar_cancel",
-                        DUActionUtils.PACKAGE_SYSTEMUI),
-                DUActionUtils.getDrawable(mHost.getContext(), "ic_smartbar_editor_cancel",
-                        DUActionUtils.PACKAGE_SYSTEMUI));
-        mPrimaryMenuItems.put(5, action);
-
-        action = new ActionItem(6,
-                DUActionUtils.getString(mHost.getContext(), "label_smartbar_finish",
-                        DUActionUtils.PACKAGE_SYSTEMUI),
-                DUActionUtils.getDrawable(mHost.getContext(), "ic_smartbar_editor_finish",
-                        DUActionUtils.PACKAGE_SYSTEMUI));
-        mPrimaryMenuItems.put(6, action);
     }
 
     private void loadTapMenuMap() {
