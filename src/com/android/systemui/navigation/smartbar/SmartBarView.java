@@ -331,7 +331,11 @@ public class SmartBarView extends BaseNavigationBar {
             } else {
                 light = SmartBarHelper.resizeCustomButtonIcon(config.getCurrentIcon(ctx), ctx, mCustomIconScale).mutate();
                 dark = SmartBarHelper.resizeCustomButtonIcon(config.getCurrentIcon(ctx), ctx, mCustomIconScale).mutate();
+<<<<<<< HEAD
                 dark.setColorFilter(new PorterDuffColorFilter(0xff353535, PorterDuff.Mode.MULTIPLY));
+=======
+                dark.setColorFilter(new PorterDuffColorFilter(0x4D353535, PorterDuff.Mode.SRC_ATOP));
+>>>>>>> dddd1bb... Fling and Smartbar: darken also custom buttons icons on light navbar
                 if (isBackButton) {
                     bd = SmartBackButtonDrawable.create(light, dark);
                     bd.setImeVisible(backAlt);
