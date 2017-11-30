@@ -654,7 +654,7 @@ public class SmartBarView extends BaseNavigationBar {
 
     private void updateNavDoubletapSetting() {
         isNavDoubleTapEnabled = Settings.Secure.getIntForUser(getContext().getContentResolver(),
-                Settings.Secure.SMARTBAR_DOUBLETAP_SLEEP, 1, UserHandle.USER_CURRENT) == 1;
+                Settings.Secure.SMARTBAR_DOUBLETAP_SLEEP, 0, UserHandle.USER_CURRENT) == 1;
     }
 
     void recreateButtonLayout(ArrayList<ButtonConfig> buttonConfigs, boolean landscape,
